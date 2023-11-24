@@ -1,0 +1,11 @@
+{
+    "customer": {
+        "name": "John Doe"
+    },
+    "order": {
+        "quantity": 8,
+        "item": {
+            "name": "iPhone 15"
+        }
+    }
+}
