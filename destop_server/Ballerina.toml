@@ -1,0 +1,8 @@
+[package]
+org = "bff_demo"
+name = "destop_server"
+version = "0.1.0"
+distribution = "2201.8.3"
+
+[build-options]
+observabilityIncluded = true
