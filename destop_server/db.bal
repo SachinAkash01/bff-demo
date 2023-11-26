@@ -19,7 +19,7 @@ final table<Order> key(id) orderTable = table [
             "arrival": "2023-12-18"
         },
         "date": "2023-11-28",
-        "status": "COMPLETED",
+        "status": "SHIPPED",
         "quantity": 8,
         "item": {
             "itemId": "I-123",
@@ -47,7 +47,7 @@ final table<Order> key(id) orderTable = table [
             "arrival": "2023-12-28"
         },
         "date": "2023-11-28",
-        "status": "COMPLETED",
+        "status": "SHIPPED",
         "quantity": 7,
         "item": {
             "itemId": "I-547",
@@ -75,7 +75,7 @@ final table<Order> key(id) orderTable = table [
             "arrival": "2023-12-28"
         },
         "date": "2023-11-28",
-        "status": "COMPLETED",
+        "status": "PENDING",
         "quantity": 7,
         "item": {
             "itemId": "I-547",
@@ -103,7 +103,7 @@ final table<Order> key(id) orderTable = table [
             "arrival": "2023-12-28"
         },
         "date": "2023-11-28",
-        "status": "COMPLETED",
+        "status": "SHIPPED",
         "quantity": 7,
         "item": {
             "itemId": "I-547",

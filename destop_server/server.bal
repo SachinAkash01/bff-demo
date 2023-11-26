@@ -44,7 +44,7 @@ type Order record {
 }
 service /sales on new http:Listener(9092) {
 
-    resource function get orders() returns Order[]{
+    resource function get orders() returns Order[] {
         return orderTable.toArray();
     }
     resource function get orders/[string id]() returns Order|http:NotFound {

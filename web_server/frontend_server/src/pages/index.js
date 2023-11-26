@@ -129,19 +129,6 @@ const Page = () => {
                   Orders
                 </Typography>
               </Stack>
-              <div>
-                <Button
-                  startIcon={(
-                    <SvgIcon fontSize="small">
-                      <PlusIcon />
-                    </SvgIcon>
-                  )}
-                  variant="contained"
-                  href='/create-order'
-                >
-                  Add
-                </Button>
-              </div>
             </Stack>
             <Stack
               direction="row"

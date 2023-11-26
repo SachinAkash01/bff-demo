@@ -42,7 +42,7 @@ export default function SimpleDialog(props) {
         <p><b>{"cargo -"}</b> {order.shipId == null ? "Not assigned": order.shipId}</p>
         </li>
         <li>
-        <p><b>{"customer -"}</b> {order.customerId}</p>
+        <p><b>{"customer -"}</b> {order.customer}</p>
         </li>
         <li>
         <p><b>{"Item -"}</b> {order.item}</p>
