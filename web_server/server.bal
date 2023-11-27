@@ -1,6 +1,6 @@
 import ballerina/http;
 
-final http:Client serviceClient = check new (url = "http://localhost:9092");
+final http:Client serviceClient = check new (url = "http://localhost:9093");
 
 @http:ServiceConfig {
     cors: {

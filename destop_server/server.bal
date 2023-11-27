@@ -42,7 +42,7 @@ type Order record {
         allowOrigins: ["*"]
     }
 }
-service /sales on new http:Listener(9092) {
+service /sales on new http:Listener(9093) {
 
     resource function get orders() returns Order[] {
         return orderTable.toArray();

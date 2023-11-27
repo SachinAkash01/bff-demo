@@ -29,13 +29,25 @@ import {
   TableRow,
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
+import { useEffect, useState } from 'react';
 
 export const OrdersTable = (props) => {
   const {
     items = [],
     handleClick,
-    open = false
   } = props;
+
+  const [location, setLocation] = useState({longitude: "1.2342", latitude: "2.2342"});
+
+  useEffect(() => {
+    const wsClient1 = new WebSocket("ws://localhost:9092/logistics/vehicles/H-110");
+    wsClient1.onmessage = (message) => {
+      setTimeout(()=>{
+        setLocation(JSON.parse(message.data));
+       }, 10000)
+    }
+    
+  }, [location]);
 
   return (
     <Card>
@@ -61,6 +73,9 @@ export const OrdersTable = (props) => {
                 </TableCell>
                 <TableCell>
                   Date
+                </TableCell>
+                <TableCell width={"200px"}>
+                  Location
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -88,6 +103,9 @@ export const OrdersTable = (props) => {
                     </TableCell>
                     <TableCell>
                       {order.date}
+                    </TableCell>
+                    <TableCell>
+                      {location.longitude + " "+ location.latitude}
                     </TableCell>
                     <TableCell>
                       <Button onClick={() => handleClick(order.id)}>View</Button>
