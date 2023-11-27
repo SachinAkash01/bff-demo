@@ -1,12 +1,13 @@
 import ballerina/lang.runtime;
+import ballerina/log;
 import ballerina/random;
 import ballerina/websocket;
-import ballerina/log;
 
 type Location record {|
     float latitude;
     float longitude;
 |};
+
 service /logistics on new websocket:Listener(9092) {
     resource function get vehicles/[string orderId]() returns websocket:Service {
         return new LocationService(orderId);
