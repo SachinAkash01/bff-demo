@@ -203,6 +203,9 @@ version = "0.0.0"
 dependencies = [
 	{org = "ballerina", name = "jballerina.java"}
 ]
+modules = [
+	{org = "ballerina", packageName = "lang.runtime", moduleName = "lang.runtime"}
+]
 
 [[package]]
 org = "ballerina"
@@ -274,6 +277,18 @@ dependencies = [
 
 [[package]]
 org = "ballerina"
+name = "random"
+version = "1.5.0"
+dependencies = [
+	{org = "ballerina", name = "jballerina.java"},
+	{org = "ballerina", name = "time"}
+]
+modules = [
+	{org = "ballerina", packageName = "random", moduleName = "random"}
+]
+
+[[package]]
+org = "ballerina"
 name = "task"
 version = "2.5.0"
 dependencies = [
@@ -327,6 +342,9 @@ dependencies = [
 	{org = "ballerina", name = "oauth2"},
 	{org = "ballerina", name = "time"}
 ]
+modules = [
+	{org = "ballerina", packageName = "websocket", moduleName = "websocket"}
+]
 
 [[package]]
 org = "ballerinai"
@@ -347,6 +365,9 @@ version = "0.1.0"
 dependencies = [
 	{org = "ballerina", name = "graphql"},
 	{org = "ballerina", name = "http"},
+	{org = "ballerina", name = "lang.runtime"},
+	{org = "ballerina", name = "random"},
+	{org = "ballerina", name = "websocket"},
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [

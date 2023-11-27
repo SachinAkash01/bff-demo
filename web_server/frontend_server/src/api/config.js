@@ -15,27 +15,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import gql from 'graphql-tag';
 
-export const resetServer = "http://localhost:9090";
-export const graphQlServer = "http://localhost:9091";
-export const wsServer = "http://localhost:9092";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { graphQlUrl } from 'src/constants/Constants';
 
-// GET HTTP REST requests
-export const getCustomerOrderUrl = (id) => resetServer + `/sales/customers/${id}/orders`;
+export const apolloClient1 = new ApolloClient({
+    uri: graphQlUrl ,
+    cache: new InMemoryCache()
+  });
 
-// GET GraphQL Quries
-
-export const graphQlUrl = graphQlServer + "/sales";
-
-export const getOrdersQuery = 
-    gql `query {
-            orders {
-                id
-                ship { shipId }
-                date
-                status
-                quantity
-                item { itemId }
-            }
-        }`;

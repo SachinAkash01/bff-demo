@@ -1,33 +1,39 @@
 import ballerina/http;
+import ballerina/random;
 
-type Address record {
+type Location record {|
+    float latitude;
+    float longitude;
+|};
+
+type Address record {|
     string street;
     string city;
     string state;
     string zip;
-};
+|};
 
-type Customer record {
+type Customer record {|
     string customerId;
     Address address;
     string name;
     string email;
-};
+|};
 
-type Ship record {
+type Ship record {|
     string shipId;
     string destination;
     string startFrom;
     string arrival;
-};
+|};
 
-type Item record {
+type Item record {|
     string itemId;
     string name;
     decimal price;
-};
+|};
 
-type Order record {
+type Order record {|
     readonly string id;
     Customer customer;
     Ship ship;
@@ -35,14 +41,14 @@ type Order record {
     string status;
     int quantity;
     Item item;
-};
+|};
 
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["*"]
     }
 }
-service /sales on new http:Listener(9092) {
+service /sales on new http:Listener(9093) {
 
     resource function get orders() returns Order[] {
         return orderTable.toArray();
@@ -58,4 +64,11 @@ service /sales on new http:Listener(9092) {
             where entry.customer.customerId == customerId && entry.status == status
             select entry;
     };
+
+    resource function get orders/locations() returns Location|error {
+        return {
+            latitude: check random:createIntInRange(668700, 1246700) * 1.0 / 10000.0,
+            longitude: check random:createIntInRange(258400, 493800) * 1.0 / 10000.0
+        };
+    }
 }

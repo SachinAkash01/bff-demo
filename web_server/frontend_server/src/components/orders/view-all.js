@@ -15,27 +15,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import gql from 'graphql-tag';
+import React from 'react';
+import { OrdersTable } from './orders-table';
+import { useQuery } from '@apollo/client';
+import { getOrdersQuery } from 'src/constants/Constants';
 
-export const resetServer = "http://localhost:9090";
-export const graphQlServer = "http://localhost:9091";
-export const wsServer = "http://localhost:9092";
+export default function ViewAll(props) {
+  
+    const { loading, error, data } = useQuery(getOrdersQuery);
+      if (loading) return <p></p>;
+      if (error) return <p>Error: {error.message}</p>;
 
-// GET HTTP REST requests
-export const getCustomerOrderUrl = (id) => resetServer + `/sales/customers/${id}/orders`;
+  return (
+    <OrdersTable
+        items={data.orders}
+    />
+  );
+}
 
-// GET GraphQL Quries
-
-export const graphQlUrl = graphQlServer + "/sales";
-
-export const getOrdersQuery = 
-    gql `query {
-            orders {
-                id
-                ship { shipId }
-                date
-                status
-                quantity
-                item { itemId }
-            }
-        }`;

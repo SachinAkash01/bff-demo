@@ -24,6 +24,8 @@ import { useNProgress } from 'src/hooks/use-nprogress';
 import { createTheme } from 'src/theme';
 import { createEmotionCache } from 'src/utils/create-emotion-cache';
 import 'simplebar-react/dist/simplebar.min.css';
+import { ApolloProvider } from '@apollo/client';
+import { apolloClient1 } from 'src/api/config';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -49,12 +51,14 @@ const App = (props) => {
           content="initial-scale=1, width=device-width"
         />
       </Head>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-              {
-                  getLayout(<Component {...pageProps} />)
-              }
-          </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <ApolloProvider client={apolloClient1}>
+          <CssBaseline />
+          {
+            getLayout(<Component {...pageProps} />)
+          }
+        </ApolloProvider>
+      </ThemeProvider>
     </CacheProvider>
   );
 };

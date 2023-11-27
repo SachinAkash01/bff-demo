@@ -23,9 +23,10 @@ import { Box, Button, Container, Stack, SvgIcon, Typography } from '@mui/materia
 import { OrdersTable } from 'src/components/orders/orders-table';
 import { OrdersSearch } from 'src/components/orders/orders-search';
 import OrderSelect from 'src/components/orders/orders-dropdown';
-import { getCustomerOrderUrl, getOrderUrl } from 'src/constants/Constants';
+import { getCustomerOrderUrl, getOrderUrl, getOrdersQuery } from 'src/constants/Constants';
 import { getAPI } from 'src/api/ApiHandler';
 import SimpleDialog from 'src/components/orders/view-order';
+import { useQuery } from '@apollo/client';
 
 const Page = () => {
   const [loading, setLoading] = useState(false);
@@ -37,6 +38,10 @@ const Page = () => {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState('');
   const [order, setOrder] = useState('');
+
+  const { l, e, d } = useQuery(getOrdersQuery);
+  if (loading) return <p></p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   const fetchOrderData = async (orderId) => {
     try {
@@ -65,7 +70,10 @@ const Page = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await getAPI(customer != '' && status != '' ? getCustomerOrderUrl(customer) + "?status=" + status: getOrderUrl);
+      const response = customer != '' && status != '' ? await getAPI(getCustomerOrderUrl(customer) + "?status=" + status) : null;
+      if (response == null) {
+        return -1;
+      }
       if (response.status !== 200) {
         setError(response.message);
       } else {
@@ -81,7 +89,10 @@ const Page = () => {
 };
 
   useEffect(() => {
-    fetchData();
+    var a = fetchData();
+    if (a == -1) {
+      setData(d.orders);
+    }
   }, [filter]);
 
   useEffect(() => {

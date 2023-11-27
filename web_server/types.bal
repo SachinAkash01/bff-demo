@@ -1,5 +1,4 @@
-
-type Order record {
+type Order record {|
     string id;
     string customer;
     string shipId;
@@ -7,33 +6,46 @@ type Order record {
     string status;
     int quantity;
     string item;
-};
+|};
 
-type DesktopResponse record {
-    string id;
-    record {
-        string customerId;
-        record {
-            string street;
-            string city;
-            string state;
-            string zip;
-        } address;
-        string name;
-        string email;
-    } customer;
-    record {
-        string shipId;
-        string destination;
-        string startFrom;
-        string arrival;
-    } ship;
+type Address record {|
+    string street;
+    string city;
+    string state;
+    string zip;
+|};
+
+type Customer record {|
+    string customerId;
+    Address address;
+    string name;
+    string email;
+|};
+
+type Ship record {|
+    string shipId;
+    string destination;
+    string startFrom;
+    string arrival;
+|};
+
+type Item record {|
+    string itemId;
+    string name;
+    decimal price;
+|};
+
+type Response record {|
+    readonly string id;
+    Customer customer;
+    Ship ship;
     string date;
     string status;
     int quantity;
-    record {
-        string itemId;
-        string name;
-        decimal price;
-    } item;
-};
+    Item item;
+|};
+
+type Location record {|
+    float latitude;
+    float longitude;
+|};
