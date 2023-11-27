@@ -1,5 +1,4 @@
 import ballerina/lang.runtime;
-import ballerina/log;
 import ballerina/random;
 import ballerina/websocket;
 
@@ -34,7 +33,6 @@ distinct service class LocationService {
                 latitude: check random:createIntInRange(668700, 1246700) * 1.0 / 10000.0,
                 longitude: check random:createIntInRange(258400, 493800) * 1.0 / 10000.0
             };
-            log:printInfo("Sending location of order " + orderId + " to client: " + currentLocation.toBalString());
             check caller->writeMessage(currentLocation);
             runtime:sleep(3);
         }

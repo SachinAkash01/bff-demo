@@ -15,7 +15,7 @@ service /sales on new graphql:Listener(9091) {
     }
 
     resource function get getOrder(string id) returns Order|error {
-        DesktopResponse res = check sClient->/orders/[id];
+        DesktopResponse res = check sClient->/sales/orders/[id];
         return convertResponse(res);
     }
 }
