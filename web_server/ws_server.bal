@@ -7,7 +7,7 @@
 //     float longitude;
 // |};
 
-// service /logistics on new websocket:Listener(9092) {
+// service /logistics on new websocket:Listener(9096) {
 //     resource function get vehicles/[string orderId]() returns websocket:Service {
 //         return new LocationService(orderId);
 //     }
