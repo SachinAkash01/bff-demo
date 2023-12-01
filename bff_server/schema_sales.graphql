@@ -1,0 +1,15 @@
+type Query {
+  orders: [Order!]!
+  getOrder(id: String!): Order!
+  customerOrders(customerId: String!, status: String! = ""): [Order!]!
+}
+
+type Order {
+  id: String!
+  customer: String!
+  shipId: String!
+  date: String!
+  status: String!
+  quantity: Int!
+  item: String!
+}
