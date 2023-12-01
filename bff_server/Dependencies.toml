@@ -360,7 +360,7 @@ modules = [
 
 [[package]]
 org = "bff_demo"
-name = "web_server"
+name = "bff_server"
 version = "0.1.0"
 dependencies = [
 	{org = "ballerina", name = "graphql"},
@@ -371,6 +371,6 @@ dependencies = [
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [
-	{org = "bff_demo", packageName = "web_server", moduleName = "web_server"}
+	{org = "bff_demo", packageName = "bff_server", moduleName = "bff_server"}
 ]
 
